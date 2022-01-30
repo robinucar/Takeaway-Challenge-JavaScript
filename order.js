@@ -1,26 +1,27 @@
-
-const Dish = require('./dish/dish')
+const Dish = require("./dish/dish");
 class Order {
   constructor() {
     this.orderList = [];
+    this.totalPrice = 0;
   }
 
-  add(dish, amount = 1) {
-    dish = {dish, amount}
-    return this.orderList.push(dish);
+  add(dish = new Dish.getName(), amount = 1) {
+    const newdish = { dish, amount };
+    return this.orderList.push(newdish);
   }
 
   printOrder() {
-      return this.orderList.map(order => {
-          return `${order.dish} x ${order.amount}`
-      })
+    return this.orderList.map((order) => {
+      return `${order.dish} x ${order.amount}`;
+    });
+  }
+
+  total() {
+    this.orderList.map((order) => {
+      this.totalPrice += order.dish.price * order.amount;
+    });
+    return this.totalPrice;
   }
 }
 
 module.exports = Order;
-
- const o = new Order()
- o.add('Beef Burger', 1)
- o.add('Fish & Chips',2)
- o.add('Lasagna & Salad', 3)
- console.log(o.orderList)

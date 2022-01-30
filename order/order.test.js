@@ -1,5 +1,3 @@
-const { expect } = require("@jest/globals");
-const Dish = require("./dish/dish");
 const Order = require("./order");
 describe("Order class", () => {
   const order = new Order();
@@ -16,26 +14,28 @@ describe("Order class", () => {
   });
 
   it("can add several of the same dish and several different dishes", () => {
-    order.orderList.pop();
-    order.add("Lasagna & Salad");
-    order.add("Fish & Chips", 3);
-    expect(order.orderList[0]).toEqual({ dish: "Lasagna & Salad", amount: 1 });
-    expect(order.orderList[1]).toEqual({ dish: "Fish & Chips", amount: 3 });
+    const order1 = new Order();
+    order1.add("Lasagna & Salad");
+    order1.add("Fish & Chips", 3);
+    expect(order1.orderList[0]).toEqual({ dish: "Lasagna & Salad", amount: 1 });
+    expect(order1.orderList[1]).toEqual({ dish: "Fish & Chips", amount: 3 });
   });
 
   it("prints the order summary", () => {
-    order.orderList.pop();
-    order.orderList.pop();
-    order.add("Fish & Chips", 3);
-    order.add("Beef Burger");
-    expect(order.printOrder()).toEqual(["Fish & Chips x 3", "Beef Burger x 1"]);
+    const order2 = new Order();
+    order2.add("Fish & Chips", 3);
+    order2.add("Beef Burger");
+    expect(order2.printOrder()).toEqual([
+      "Fish & Chips x 3",
+      "Beef Burger x 1",
+    ]);
   });
 
   it("returns the total price of order", () => {
-    const order1 = new Order();
-    order1.add(dish1, 2);
-    order1.add(dish2, 1);
-    order1.add(dish3, 1);
-    expect(order1.total()).toEqual(42);
+    const order3 = new Order();
+    order3.add(dish1, 2);
+    order3.add(dish2, 1);
+    order3.add(dish3, 1);
+    expect(order3.total()).toEqual(42);
   });
 });

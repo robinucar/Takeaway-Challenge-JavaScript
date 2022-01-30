@@ -1,11 +1,10 @@
-const Dish = require("./dish/dish");
 class Order {
   constructor() {
     this.orderList = [];
     this.totalPrice = 0;
   }
 
-  add(dish = new Dish.getName(), amount = 1) {
+  add(dish, amount = 1) {
     const newdish = { dish, amount };
     return this.orderList.push(newdish);
   }

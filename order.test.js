@@ -8,7 +8,7 @@ describe("Order class", () => {
   });
 
   it('can add dish to the order list', () => {
-    order.add('Beef Burger', 1)
+    order.add('Beef Burger')
     expect(order.orderList[0]['dish']).toEqual('Beef Burger')
   })
 
@@ -20,5 +20,11 @@ describe("Order class", () => {
       expect(order.orderList[1]).toEqual({dish: 'Fish & Chips', amount: 3})
   })
 
-
+  it('prints the order summary', () => {
+    order.orderList.pop()
+    order.orderList.pop()
+    order.add('Fish & Chips', 3)
+    order.add('Beef Burger')
+    expect(order.printOrder()).toEqual(['Fish & Chips x 3','Beef Burger x 1'])
+  })
 });

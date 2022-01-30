@@ -9,12 +9,18 @@ class Order {
     dish = {dish, amount}
     return this.orderList.push(dish);
   }
+
+  printOrder() {
+      return this.orderList.map(order => {
+          return `${order.dish} x ${order.amount}`
+      })
+  }
 }
 
 module.exports = Order;
 
-// const o = new Order()
-// o.add('Beef Burger', 1)
-// o.add('Fish & Chips',2)
-// o.add('Lasagna & Salad', 3)
-// console.log(o.orderList)
+ const o = new Order()
+ o.add('Beef Burger', 1)
+ o.add('Fish & Chips',2)
+ o.add('Lasagna & Salad', 3)
+ console.log(o.orderList)

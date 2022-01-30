@@ -2,14 +2,23 @@ const { expect } = require("@jest/globals");
 const Order = require("./order");
 describe("Order class", () => {
     const order = new Order();
-    const dish = {name: 'Beef Burger', price: 7}
   it("starts with an empty order list", () => {
    
     expect(order.orderList).toBeNull;
   });
 
   it('can add dish to the order list', () => {
-    order.add(dish)
-    expect(order.orderList[0]).toEqual({name: 'Beef Burger', price: 7})
+    order.add('Beef Burger', 1)
+    expect(order.orderList[0]['dish']).toEqual('Beef Burger')
   })
+
+  it('can add several of the same dish and several different dishes', () => {
+      order.orderList.pop()
+      order.add('Lasagna & Salad')
+      order.add('Fish & Chips', 3)
+      expect(order.orderList[0]).toEqual({dish: 'Lasagna & Salad', amount: 1})
+      expect(order.orderList[1]).toEqual({dish: 'Fish & Chips', amount: 3})
+  })
+
+
 });

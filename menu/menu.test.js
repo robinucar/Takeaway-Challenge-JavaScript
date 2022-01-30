@@ -1,5 +1,5 @@
 const Menu = require("./menu");
-const Dish = require("./dish/dish")
+const Dish = require("../dish/dish")
 describe("Menu class", () => {
    
     const menu = new Menu(

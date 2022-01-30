@@ -1,4 +1,4 @@
-const Dish = require("./dish/dish");
+const Dish = require("../dish/dish");
 class Menu {
   constructor(...dishes) {
     this.dishes = dishes;

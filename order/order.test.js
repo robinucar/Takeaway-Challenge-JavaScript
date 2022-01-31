@@ -23,8 +23,8 @@ describe("Order class", () => {
 
   it("prints the order summary", () => {
     const order2 = new Order();
-    order2.add("Fish & Chips", 3);
-    order2.add("Beef Burger");
+    order2.add(dish2, 3);
+    order2.add(dish1);
     expect(order2.printOrder()).toEqual([
       "Fish & Chips x 3",
       "Beef Burger x 1",
@@ -36,6 +36,6 @@ describe("Order class", () => {
     order3.add(dish1, 2);
     order3.add(dish2, 1);
     order3.add(dish3, 1);
-    expect(order3.total()).toEqual(42);
+    expect(order3.total()).toEqual('£ 42');
   });
 });
